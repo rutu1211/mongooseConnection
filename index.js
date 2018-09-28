@@ -3,6 +3,7 @@ var express = require('express')
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 let route = require('./registration');
+let login = require('./Login');
 
 // declartion
 var app = express();
@@ -30,7 +31,9 @@ db.once('open', function() {
 });
 
 //api
-app.all('/*',route);
+
+app.all('/registration/*',route);
+app.all('/Login/*',login);
 
 //server start
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
